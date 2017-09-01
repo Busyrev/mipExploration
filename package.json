@@ -10,8 +10,6 @@
   },
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
     "grunt-ts": "6.0.0-beta.16",
     "time-grunt": "^1.4.0"
   },
@@ -19,5 +17,5 @@
     "build": "grunt build_app"
   },
   "author": "m.busyrev",
-  "license": "ISC"
+  "license": "MIT"
 }
