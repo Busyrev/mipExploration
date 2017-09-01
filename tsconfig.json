@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "outFile": "./app.js",
+        "sourceMap": true,
+        "inlineSources": true,
+        "removeComments": false,
+        "allowJs": true,
+        "target": "es5",
+        "module": "amd",
+        "noImplicitAny": true,
+        "noLib": false,
+        "preserveConstEnums": false,
+        "moduleResolution": "node",
+        "noFallthroughCasesInSwitch": false,
+        "noImplicitReturns": true,
+        "allowUnreachableCode": true,
+        "typeRoots": [
+            "typings/",
+            "node_modules/@types"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
