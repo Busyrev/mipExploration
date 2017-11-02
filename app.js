@@ -3,6 +3,9 @@ var vertexSrc = "\nattribute vec3 aVertexPosition;\nattribute vec2 aTextureCoord
 var fragmentSrc = "\nprecision mediump float;\n\nvarying vec2 vTextureCoord;\n\nuniform sampler2D uSampler;\n\nvoid main(void) {\n    gl_FragColor = texture2D(uSampler, vec2(pow((vTextureCoord.s-0.5)*(vTextureCoord.s-0.5) + (vTextureCoord.t-0.5)*(vTextureCoord.t-0.5), 0.1), vTextureCoord.t));\n    //gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s*vTextureCoord.s*vTextureCoord.s*vTextureCoord.s*vTextureCoord.s*vTextureCoord.s, vTextureCoord.t*vTextureCoord.t*vTextureCoord.t*vTextureCoord.t));\n    //gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));\n}";
 var triagSize = 1;
 var canvas = document.getElementById("main-canvas");
+var pops = {
+    preserveDrawingBuffer:true
+}
 var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 gl.viewportWidth = canvas.width;
 gl.viewportHeight = canvas.height;
