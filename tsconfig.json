@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outFile": "Z:/farmstory/root/jsroot/app.js",
+        "outFile": "app.js",
         "sourceMap": true,
         "inlineSources": true,
         "removeComments": false,
