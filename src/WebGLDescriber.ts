@@ -4,18 +4,6 @@ class WebGLDescriber {
 
 	constructor(context:WebGLRenderingContext) {
 		try {
-			this.officiallySupported = !!(<any>window)['WebGLRenderingContext'];
-
-			if (!context) {
-				return;
-			}
-			
-			this.userAgent = navigator.userAgent;
-			if (window.screen && typeof window.screen.width === 'number') {
-				this.screenHeight = window.screen.height;
-				this.screenWidth = window.screen.width;
-			}
-
 			this.detectVieoCard(context);
 
 			this.version = context.getParameter(context.VERSION);
@@ -122,18 +110,20 @@ class WebGLDescriber {
 	}
 
 	private detectShaderPrecisionFormat(context:WebGLRenderingContext):void {
-		this.shaderPrecisionFormats.vlf = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.LOW_FLOAT);
-		this.shaderPrecisionFormats.vmf = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.MEDIUM_FLOAT);
-		this.shaderPrecisionFormats.vhf = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.HIGH_FLOAT);
-		this.shaderPrecisionFormats.vli = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.LOW_INT);
-		this.shaderPrecisionFormats.vmi = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.MEDIUM_INT);
-		this.shaderPrecisionFormats.vhi = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.HIGH_INT);
-		this.shaderPrecisionFormats.flf = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.LOW_FLOAT);
-		this.shaderPrecisionFormats.fmf = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.MEDIUM_FLOAT);
-		this.shaderPrecisionFormats.fhf = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.HIGH_FLOAT);
-		this.shaderPrecisionFormats.fli = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.LOW_INT);
-		this.shaderPrecisionFormats.fmi = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.MEDIUM_INT);
-		this.shaderPrecisionFormats.fhi = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.HIGH_INT);
+		try {
+			this.shaderPrecisionFormats.vlf = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.LOW_FLOAT);
+			this.shaderPrecisionFormats.vmf = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.MEDIUM_FLOAT);
+			this.shaderPrecisionFormats.vhf = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.HIGH_FLOAT);
+			this.shaderPrecisionFormats.vli = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.LOW_INT);
+			this.shaderPrecisionFormats.vmi = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.MEDIUM_INT);
+			this.shaderPrecisionFormats.vhi = this.getDescibedShaderPrecisionFormat(context, context.VERTEX_SHADER, context.HIGH_INT);
+			this.shaderPrecisionFormats.flf = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.LOW_FLOAT);
+			this.shaderPrecisionFormats.fmf = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.MEDIUM_FLOAT);
+			this.shaderPrecisionFormats.fhf = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.HIGH_FLOAT);
+			this.shaderPrecisionFormats.fli = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.LOW_INT);
+			this.shaderPrecisionFormats.fmi = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.MEDIUM_INT);
+			this.shaderPrecisionFormats.fhi = this.getDescibedShaderPrecisionFormat(context, context.FRAGMENT_SHADER, context.HIGH_INT);
+		} catch (e) {}
 	}
 
 	private getDescibedShaderPrecisionFormat(context:WebGLRenderingContext, shaderType:number, precisionType:number) {
@@ -141,13 +131,11 @@ class WebGLDescriber {
 		return {rangeMin:shpf.rangeMin, rangeMax:shpf.rangeMax, precision:shpf.precision};
 	}
 
-	public userAgent:string = undefined;
 	public detectError:boolean = undefined;
 	public screenWidth:number = -1;
 	public screenHeight:number = -1;
 	public videoCard:string = 'unknown';
 	public videoVendor:string = 'unknown';
-	public officiallySupported:boolean = false;
 	public supported:boolean = false;
 	public version:string = 'unknown';
 	public shadingVesion:string = 'unknown';
