@@ -448,9 +448,9 @@ function putGlDescribingInfo(event) {
     }
     event['shaderPrecisionFormats/s'] = JSON.stringify(glDescriber.shaderPrecisionFormats);
 }
-var uidCache = null;
+var uidCache;
 function getUID() {
-    if (uidCache !== null) {
+    if (uidCache) {
         return uidCache;
     }
     if (isLocalStorageAvailable()) {

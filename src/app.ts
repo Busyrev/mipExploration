@@ -315,9 +315,9 @@ function putGlDescribingInfo(event: any): void {
 
 }
 
-let uidCache: string = null;
+let uidCache: string;
 function getUID(): string {
-    if (uidCache !== null) {
+    if (uidCache) {
         return uidCache;
     }
     if (isLocalStorageAvailable()) {
