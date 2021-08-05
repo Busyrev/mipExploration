@@ -1,7 +1,7 @@
 # mipExploration
 Showcase for mip selection in WebGl.
 
-[Example](https://busyrev.github.com/mipExploration/)
+[Example](https://busyrev.github.io/mipExploration/)
 
 
 Interest case about how video card selects wich mip level to use. It selects level depending on distance between sampler arguments from neighbour pixels.
